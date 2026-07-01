@@ -1,0 +1,19 @@
+# Jupyter
+.ipynb_checkpoints/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+env/
+
+# Data (too large / regenerate locally — see README)
+creditcard.csv
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
