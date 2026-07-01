@@ -8,12 +8,16 @@ Fraud detection is a severely imbalanced problem — fraudulent transactions mak
 
 ## Dataset
 
-- `creditcard.csv` — anonymized European credit card transactions over a two-day window (the well-known Kaggle "Credit Card Fraud Detection" dataset).
+This project uses the [Credit Card Fraud Detection dataset on Kaggle](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud) — anonymized European credit card transactions over a two-day window.
+
 - Features `V1`–`V28` are PCA-transformed components (original features are not disclosed for confidentiality); `Time` and `Amount` are kept in their original form.
 - `Class` is the target: `0` = legitimate, `1` = fraud.
 - ~1,081 duplicate rows are dropped during preprocessing to prevent data leakage between train/test splits.
 
-> **Note:** `creditcard.csv` is ~150 MB. See [Repository setup](#repository-setup-recommendations) below for how to handle this on GitHub.
+**The CSV file (~150 MB) is not included in this repository** (too large for a standard git push). To run the notebook:
+
+1. Download `creditcard.csv` from **https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud** (requires a free Kaggle account).
+2. Place it in the project root, alongside `fraud_detection.ipynb`.
 
 ## Approach
 
@@ -62,22 +66,12 @@ RandomForest and XGBoost performed comparably in initial comparison (AUC-PR ~0.8
 git clone <your-repo-url>
 cd <your-repo-name>
 pip install -r requirements.txt
+
+# Download creditcard.csv from Kaggle and place it in this folder:
+# https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud
+
 jupyter notebook fraud_detection.ipynb
 ```
-
-## Repository setup recommendations
-
-To make this a clean, professional GitHub repo:
-
-- **`requirements.txt`** — pin the libraries used (`pandas`, `numpy`, `scikit-learn`, `xgboost`, `lightgbm`, `shap`, `matplotlib`, `seaborn`, `jupyter`). A starter file is included below.
-- **`.gitignore`** — exclude `.ipynb_checkpoints/`, `__pycache__/`, virtual environment folders, and large data files.
-- **Don't commit the raw CSV directly** — at ~150 MB it's too large for a normal git repo and will bloat clone times. Options:
-  - Use [Git LFS](https://git-lfs.com/) if you want the data versioned in the repo.
-  - Or exclude it via `.gitignore` and add a short note/script in the README pointing to the [Kaggle dataset](https://www.kaggle.com/mlg-ulb/creditcardfraud) so others can download it themselves.
-- **Clear the notebook before committing (optional)** — large image outputs (plots, SHAP charts) bloat the notebook's diff size in git. Consider `jupyter nbconvert --clear-output` before commits, or keep outputs if you want the results viewable directly on GitHub.
-- **LICENSE** — add one (MIT is common for portfolio/data-science projects) so others know how they can use your code.
-- **Screenshots/plots section** — since GitHub renders notebooks but not always cleanly, consider exporting 2–3 key charts (class imbalance, PR curve, SHAP summary) as PNGs into an `images/` folder and embedding them directly in this README for a stronger first impression.
-- **A short "Key takeaways" section at the top** — recruiters and reviewers skim; the current notebook already does this well internally (design choice + core challenge stated up front) — carrying that framing into the README (as done above) helps a repo visitor understand the project in 10 seconds.
 
 ## Limitations & next steps
 
