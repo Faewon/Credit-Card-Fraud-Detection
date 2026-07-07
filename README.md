@@ -52,7 +52,6 @@ RandomForest and XGBoost performed comparably in initial comparison (AUC-PR ~0.8
 ## Project structure
 
 ```
-.
 ├── fraud_detection.ipynb   # Full analysis: EDA, feature engineering, modeling, evaluation, SHAP
 ├── creditcard.csv          # Dataset (not tracked in git — see below)
 ├── requirements.txt        # Python dependencies
